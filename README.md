@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 华宇网址导航 (nav-server)
 
 [![site](http://badge.thunisoft.com/badge/site-nav.thunisoft.com-orange.svg?logo=paper-plane)](http://nav.thunisoft.com) [![](http://badge.thunisoft.com/badge/%E8%AE%AE%E9%A2%98-issue-hotpink.svg?logo=bell)](http://open.thunisoft.com/openhub/nav-server/issues) [![Java Version](http://badge.thunisoft.com//badge/Java-1.8-blue.svg)](http://badge.thunisoft.com//badge/Java-1.8-blue.svg) [![SpringBoot](http://badge.thunisoft.com/badge/SpringBoot-2.3.2-.svg)](http://badge.thunisoft.com/badge/SpringBoot-2.3.2-.svg)
@@ -29,3 +30,6 @@ system:
 启动服务效果：
 
 ![](http://bed.thunisoft.com:9000/ibed/2020/08/04/ARx5Q7nTl.png)
+=======
+# nav
+>>>>>>> 8f53422b5fdf44f78556a4f86f2acfce422449d0
