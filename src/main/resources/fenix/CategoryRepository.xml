@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fenixs namespace="com.thunisoft.openhub.nav.repository.CategoryRepository">
+
+    <!-- 多条件分页模糊查询分类信息. -->
+    <fenix id="findByPaging">
+        SELECT
+            c
+        FROM
+            Category AS c
+        <where />
+        <andLike field="c.name" value="name" match="?name != empty" />
+    </fenix>
+
+</fenixs>

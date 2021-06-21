@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fenixs namespace="com.thunisoft.openhub.nav.repository.LinkRepository">
+
+    <!-- 多条件分页模糊查询网址信息. -->
+    <fenix id="findByPaging">
+        SELECT
+            a
+        FROM
+            Link AS a,
+            Category AS c
+        <where />
+            a.categoryId = c.id
+        <andLike field="a.name" value="linkParam.name" match="linkParam.name != empty" />
+        <andLike field="a.url" value="linkParam.url" match="linkParam.url != empty" />
+        <andLike field="c.name" value="linkParam.categoryName" match="linkParam.categoryName != empty" />
+    </fenix>
+
+    <!-- 根据页面查询该页面中的所有网址及分类信息. -->
+    <fenix id="findLinksByPage" resultType="com.blinkfox.nav.repository.dto.CategoryLinkDto">
+        SELECT
+            a.name AS name,
+            a.logo AS logo,
+            a.description AS description,
+            a.url AS url,
+            a.read AS read,
+            a.stars AS stars,
+            a.order AS order,
+            c.id AS categoryId,
+            c.parentId AS parentCategoryId,
+            c.name AS categoryName,
+            c.icon AS categoryIcon,
+            c.order AS categoryOrder
+        FROM
+            Link AS a,
+            Category AS c
+        <where />
+            a.categoryId = c.id
+        AND c.page = #{page}
+    </fenix>
+
+</fenixs>

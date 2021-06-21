@@ -1,0 +1,59 @@
+#----------------------------------------------------------------------------------------- #
+#-- 1. 此配置文件作为默认全面的配置信息文件，包含了本服务最全的配置信息，供开发或运维人员参考配置；-- #
+#-- 2. 不建议直接修改此配置文件，而是复制相关配置项到 application-local.yml 中去修改；----------- #
+#-- 3. application-local.yml 配置文件中的配置优先级比 application.yml 配置文件要高；----------- #
+#-- 4. 运维人员需要注意的是，配置项的冒号(':')后面需要有一个空格，否则配置不会生效。--------------- #
+#----------------------------------------------------------------------------------------- #
+
+# 设置端口，默认 9999.
+server:
+  port: 9999
+  shutdown: graceful
+
+# Spring 相关配置.
+spring:
+  profiles:
+    active: local
+  application:
+    name: nav-server
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # 使用 HSQLDB 嵌入式数据库.
+  datasource:
+    url: jdbc:hsqldb:file:~/.nav-server/db/db_nav
+    username: root
+    password: 123456
+  security:
+    user:
+      name: admin
+      password: 123456
+      roles: admin
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 5MB
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true # 启动时是否初始化数据库
+    database-platform: org.hibernate.dialect.HSQLDialect
+
+# 日志的相关配置.
+logging:
+  file:
+    name: logs/nav-server.log
+  level:
+    root: info
+    com:
+      zaxxer: warn
+    hsqldb: warn
+    org:
+      apache: error
+      hibernate: error
+      springframework: error
+
+# 本系统的相关配置.
+system:
+  load-json-data: true # 是否从 JSON 配置文件中加载保存网址导航分类和网址信息.
